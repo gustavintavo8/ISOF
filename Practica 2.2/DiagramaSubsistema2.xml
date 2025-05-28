@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<mxfile>
+  <!-- Diagrama para Subsistema de Gestión Económica -->
+  <diagram name="Gestión Económica">
+    <mxGraphModel dx="800" dy="800" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="1600" pageHeight="2000" math="0" shadow="0">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+
+        <!-- Actores -->
+        <mxCell id="2" value="Delegado" style="shape=ellipse;whiteSpace=wrap;html=1;strokeColor=black;fillColor=#d5e8d4;" vertex="1" parent="1">
+          <mxGeometry x="50" y="150" width="100" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="3" value="Compañía de Seguros" style="shape=ellipse;whiteSpace=wrap;html=1;strokeColor=black;fillColor=#f5f5f5;" vertex="1" parent="1">
+          <mxGeometry x="50" y="300" width="160" height="60" as="geometry" />
+        </mxCell>
+
+        <!-- Casos de Uso -->
+        <mxCell id="4" value="Registrar Pagos No Domiciliados" style="shape=ellipse;whiteSpace=wrap;html=1;strokeColor=black;fillColor=#dae8fc;" vertex="1" parent="1">
+          <mxGeometry x="300" y="100" width="180" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="5" value="Registrar Cobros Domiciliados" style="shape=ellipse;whiteSpace=wrap;html=1;strokeColor=black;fillColor=#dae8fc;" vertex="1" parent="1">
+          <mxGeometry x="300" y="200" width="180" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="6" value="Registrar Comisiones" style="shape=ellipse;whiteSpace=wrap;html=1;strokeColor=black;fillColor=#dae8fc;" vertex="1" parent="1">
+          <mxGeometry x="300" y="300" width="140" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="7" value="Comparar Pagos/Cobros con Informes" style="shape=ellipse;whiteSpace=wrap;html=1;strokeColor=black;fillColor=#dae8fc;" vertex="1" parent="1">
+          <mxGeometry x="300" y="400" width="200" height="60" as="geometry" />
+        </mxCell>
+
+        <!-- Relaciones -->
+        <mxCell id="8" edge="1" parent="1" source="2" target="4">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="9" edge="1" parent="1" source="2" target="5">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="10" edge="1" parent="1" source="2" target="6">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="11" edge="1" parent="1" source="2" target="7">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="12" edge="1" parent="1" source="3" target="7">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>

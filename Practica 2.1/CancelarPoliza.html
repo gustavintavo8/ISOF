@@ -1,0 +1,253 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cancelar Póliza de Seguro</title>
+    <style>
+        * {
+            box-sizing: border-box;
+            font-family: Arial, sans-serif;
+        }
+
+        body {
+            background-color: #f3f6f9;
+            color: #333;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 20px;
+        }
+
+        .app-container {
+            width: 90%;
+            max-width: 800px;
+            background: #ffffff;
+            border-radius: 8px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+            padding: 20px;
+        }
+
+        .header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding-bottom: 20px;
+            border-bottom: 2px solid #e8ebef;
+            color: #34495e;
+        }
+
+        .header h1 {
+            font-size: 24px;
+            color: #2c3e50;
+        }
+
+        .section {
+            margin-top: 20px;
+            color: #555;
+        }
+
+        .section h2 {
+            font-size: 20px;
+            color: #2c3e50;
+            margin-bottom: 10px;
+        }
+
+        .input-group {
+            margin-bottom: 15px;
+        }
+
+        .input-group label {
+            font-size: 14px;
+            color: #555;
+            display: block;
+            margin-bottom: 5px;
+        }
+
+        input[type="text"], select, textarea {
+            width: 100%;
+            padding: 10px;
+            font-size: 14px;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            background-color: #f9f9f9;
+        }
+
+        textarea {
+            resize: vertical;
+        }
+
+        /* Tabla de impagos */
+        .impagos-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 10px;
+        }
+
+        .impagos-table th {
+            background-color: #3498db;
+            color: #fff;
+            padding: 10px;
+            font-weight: normal;
+        }
+
+        .impagos-table td {
+            padding: 10px;
+            border: 1px solid #ddd;
+        }
+
+        .impagos-table tr:nth-child(even) {
+            background-color: #f8f8f8;
+        }
+
+        .impagos-table button {
+            padding: 5px 10px;
+            font-size: 14px;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            color: #fff;
+            background-color: #3498db;
+            transition: background-color 0.3s;
+        }
+
+        .impagos-table button:hover {
+            background-color: #2980b9;
+        }
+
+        .impagos-table button.abonado {
+            background-color: #27ae60;
+            cursor: default;
+        }
+
+        /* Botones de acción */
+        .button-group {
+            display: flex;
+            justify-content: flex-end;
+            margin-top: 20px;
+            gap: 10px;
+        }
+
+        .btn {
+            padding: 10px 20px;
+            font-size: 16px;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+            color: #fff;
+        }
+
+        .btn-cancel {
+            background-color: #e74c3c;
+        }
+
+        .btn-cancel:hover {
+            background-color: #c0392b;
+        }
+
+        .btn-submit {
+            background-color: #bdc3c7;
+            cursor: not-allowed;
+        }
+
+        .btn-submit.active {
+            background-color: #27ae60;
+            cursor: pointer;
+        }
+
+        .btn-submit.active:hover {
+            background-color: #1e8449;
+        }
+    </style>
+</head>
+<body>
+
+<div class="app-container">
+    <div class="header">
+        <h1>Cancelar Póliza de Seguro</h1>
+    </div>
+
+    <!-- Sección de búsqueda -->
+    <div class="section">
+        <h2>Buscar Póliza</h2>
+        <div class="input-group">
+            <label for="nombre">Nombre del Asegurado</label>
+            <input type="text" id="nombre" placeholder="Nombre del asegurado" value="Juan Pérez">
+        </div>
+        <div class="input-group">
+            <label for="polizaId">ID de la Póliza</label>
+            <input type="text" id="polizaId" placeholder="ID de la póliza" value="POL123456">
+        </div>
+    </div>
+
+    <!-- Información de impagos -->
+    <div class="section">
+        <h2>Información de Impagos</h2>
+        <table class="impagos-table" id="impagosTable">
+            <tr>
+                <th>Fecha de Impago</th>
+                <th>Monto</th>
+                <th>Descripción</th>
+                <th>Acción</th>
+            </tr>
+            <tr>
+                <td>15/01/2023</td>
+                <td>$150.00</td>
+                <td>Pago trimestral atrasado</td>
+                <td><button onclick="abonarImpago(this)">Abonar</button></td>
+            </tr>
+            <tr>
+                <td>15/04/2023</td>
+                <td>$150.00</td>
+                <td>Pago trimestral atrasado</td>
+                <td><button onclick="abonarImpago(this)">Abonar</button></td>
+            </tr>
+        </table>
+    </div>
+
+    <!-- Confirmación de cancelación -->
+    <div class="section">
+        <h2>Confirmar Cancelación</h2>
+        <div class="input-group">
+            <label for="motivoCancelacion">Motivo de Cancelación</label>
+            <select id="motivoCancelacion">
+                <option value="no_pago" selected>No Pago</option>
+                <option value="cambio_compania">Cambio de Compañía</option>
+                <option value="satisfaccion">Insatisfacción con el Servicio</option>
+                <option value="otros">Otros</option>
+            </select>
+        </div>
+        <div class="input-group">
+            <label for="detallesMotivo">Detalles del Motivo de Cancelación</label>
+            <textarea id="detallesMotivo" rows="4" placeholder="Explica más a fondo el motivo de la cancelación..."></textarea>
+        </div>
+    </div>
+
+    <!-- Botones de acción -->
+    <div class="button-group">
+        <button class="btn btn-cancel">Cancelar</button>
+        <button id="submitButton" class="btn btn-submit" disabled>Proceder con Cancelación</button>
+    </div>
+</div>
+
+<script>
+    // Función para abonar impago y activar el botón de cancelación si todos los impagos están abonados
+    function abonarImpago(button) {
+        button.innerText = "Abonado";
+        button.classList.add("abonado");
+        button.disabled = true;
+
+        // Verificar si todos los impagos han sido abonados
+        const allAbonados = Array.from(document.querySelectorAll(".impagos-table button")).every(btn => btn.classList.contains("abonado"));
+        const submitButton = document.getElementById("submitButton");
+
+        if (allAbonados) {
+            submitButton.classList.add("active");
+            submitButton.disabled = false;
+        }
+    }
+</script>
+
+</body>
+</html>

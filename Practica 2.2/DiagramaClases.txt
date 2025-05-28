@@ -1,0 +1,61 @@
+@startuml
+class Cliente {
+    + Nombre
+    + DNI
+    + Dirección
+    + Teléfono
+}
+
+class Poliza {
+    + FechaContratación
+    + FechaVencimiento
+    + MontoAsegurado
+    + EstadoPoliza // Activa, Vencida, Suspendida, Cancelada
+}
+
+class Ramo {
+    + Nombre // Tipo de póliza
+}
+
+class Recibo {
+    + MontoRecibo
+    + FechaEmisión
+    + FechaVencimiento
+    + EstadoRecibo // Pagado, Pendiente, Vencido
+}
+
+class Pago {
+    + Fecha
+    + MontoPago
+    + EstadoPago // Realizado, Pendiente, Fallido
+}
+
+class Comision {
+    + MontoComision
+    + Fecha
+}
+
+class Colaborador {
+    + Nombre
+}
+
+class Informe {
+    + TipoInforme // Comisiones, Recibos
+    + FechaGeneración
+}
+
+class EntidadBancaria {
+    + Nombre
+    + CuentaCliente
+}
+
+
+Cliente "1" -- "1..*" Poliza
+Poliza "1" -- "1" Ramo
+Poliza "1" -- "1..*" Recibo
+Recibo "1" -- "0..*" Pago
+Pago "1..*" -- "1" EntidadBancaria
+Poliza "0..*" -- "1" Colaborador
+Colaborador "1" -- "1..*" Comision
+Informe "0..*" -- "1..*" Cliente
+@enduml

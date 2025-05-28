@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Prototipo Gestión de Pólizas</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            background-color: #f0f4f8;
+            color: #333;
+        }
+        h1 {
+            color: #0056b3;
+        }
+        .container {
+            display: flex;
+            gap: 2em;
+            margin-top: 20px;
+        }
+        .form-container {
+            background-color: #fff;
+            padding: 20px;
+            border: 1px solid #ccc;
+            border-radius: 8px;
+            box-shadow: 0px 0px 8px rgba(0, 0, 0, 0.1);
+            width: 300px;
+        }
+        .form-container h2 {
+            font-size: 1.2em;
+            color: #0056b3;
+        }
+        .form-group {
+            margin-bottom: 15px;
+        }
+        label {
+            display: block;
+            margin-bottom: 5px;
+        }
+        input, select, textarea {
+            width: 100%;
+            padding: 8px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+        }
+        button {
+            width: 100%;
+            padding: 10px;
+            background-color: #0056b3;
+            color: #fff;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+        button:hover {
+            background-color: #004494;
+        }
+    </style>
+</head>
+<body>
+
+<h1>Prototipo de Gestión de Pólizas</h1>
+
+<div class="container">
+
+    <!-- Pantalla de Registrar Póliza -->
+    <div class="form-container">
+        <h2>Registrar Póliza</h2>
+        <form>
+            <div class="form-group">
+                <label for="client-name">Nombre del Cliente</label>
+                <input type="text" id="client-name" required>
+            </div>
+            <div class="form-group">
+                <label for="client-address">Dirección del Cliente</label>
+                <input type="text" id="client-address" required>
+            </div>
+            <div class="form-group">
+                <label for="client-id">DNI del Cliente</label>
+                <input type="text" id="client-id" required>
+            </div>
+            <div class="form-group">
+                <label for="policy-type">Tipo de Póliza</label>
+                <select id="policy-type" required>
+                    <option value="">Seleccione...</option>
+                    <option value="auto">Automóvil</option>
+                    <option value="vida">Vida</option>
+                    <option value="hogar">Hogar</option>
+                    <option value="accidentes">Accidentes</option>
+                </select>
+            </div>
+            <div class="form-group">
+                <label for="policy-premium">Prima</label>
+                <input type="number" id="policy-premium" required>
+            </div>
+            <div class="form-group">
+                <label for="collaborator">Colaborador (Opcional)</label>
+                <input type="text" id="collaborator">
+            </div>
+            <button type="submit">Guardar Póliza</button>
+        </form>
+    </div>
+
+    <!-- Pantalla de Cancelar Póliza -->
+    <div class="form-container">
+        <h2>Cancelar Póliza</h2>
+        <form>
+            <div class="form-group">
+                <label for="search-policy">Buscar Póliza por Cliente o Colaborador</label>
+                <input type="text" id="search-policy" placeholder="Ingrese nombre o ID">
+            </div>
+            <button type="button" onclick="confirmCancel()">Cancelar Póliza</button>
+        </form>
+        <div id="confirm-cancel" style="display: none;">
+            <h3>¿Confirmar Cancelación?</h3>
+            <textarea placeholder="Motivo de cancelación"></textarea>
+            <button type="button" onclick="cancelPolicy()">Confirmar Cancelación</button>
+        </div>
+    </div>
+
+</div>
+
+<script>
+    function confirmCancel() {
+        document.getElementById("confirm-cancel").style.display = "block";
+    }
+
+    function cancelPolicy() {
+        alert("La póliza ha sido cancelada exitosamente.");
+        document.getElementById("confirm-cancel").style.display = "none";
+    }
+</script>
+
+</body>
+</html>
